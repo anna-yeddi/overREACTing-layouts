@@ -17,11 +17,13 @@ function ListView(props) {
           // <ShopItem />
           <li key={i} className="item">
             <div className="item-row">
-              <img
-                src={item.img}
-                alt={item.name + ', ' + item.color}
-                className="item-img"
-              />
+              <div className="item-img-container item-img-flip">
+                <img
+                  src={item.img}
+                  alt={item.name + ', ' + item.color}
+                  className="item-img item-img-flip"
+                />
+              </div>
               <h3 className="item-name">{item.name}</h3>
               <p className="item-color">{item.color}</p>
               <p className="item-price">${item.price}</p>

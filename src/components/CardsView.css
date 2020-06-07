@@ -1,28 +1,27 @@
 .cards-container {
   width: 100%;
-  /* overflow: hidden; */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   list-style: none;
   padding: 0;
-  padding-bottom: calc(20px + env(safe-area-inset-bottom)); /* For iPhone X */
+  padding-bottom: var(--pb-gap); /* For iPhone X */
 }
 
 .card {
   width: 33.3%;
-  background-color: #f6f6f6;
+  background-color: var(--gray);
   border-radius: 1.25rem;
   margin: 0.75rem;
   padding: 1.5rem;
-  box-shadow: 0px 0.625rem 1.875rem 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0.625rem 1.875rem 0px var(--shadow);
   text-align: center;
   transition: all 0.2s;
 }
 
 .card:hover {
-  box-shadow: 0px 0px 0.625rem 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0.625rem 0px var(--shadow);
 }
 
 .card-name {
@@ -33,15 +32,49 @@
   text-transform: lowercase;
 }
 
+/* Cropped top image */
+
+.card-img-container {
+  max-height: 12rem;
+  overflow: hidden;
+}
+
+.card-img-flip {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  /* needed? not sure */
+  zoom: 1;
+}
+
 .card-img {
-  display: block;
-  width: 100%;
+  /* corrects small inline gap at bottom of containing div */
+  display: block; /* corrects small inline gap at bottom of containing div */
+  width: 100%; /* corrects obscure Firefox bug */
+  max-width: 100%;
+  /* just in case, to force correct aspect ratio */
+  height: auto !important;
+  /*width: auto\9; 
+  /* ie8+9 - use modernizr instead of this \9 hack */
+  /* lt ie8 */
+  -ms-interpolation-mode: bicubic;
+  /* optionally force a minimum size if img src size is known: */
+  /* min-height: 320px; /* max-height of .crop-height */
+  /* min-width: 480px; /* proportional to above */
+}
+
+.card-img.card-img-flip {
+  /* actually, aligns left within cropheight */
+  float: right;
+  /* clearfix after? */
 }
 
 .card-price {
   display: inline-block;
   width: 50%;
-  color: #d61e22;
+  color: var(--red);
   font-size: large;
   font-weight: 400;
   text-align: left;
@@ -50,9 +83,9 @@
 .card-cta {
   float: right;
   padding: 0.75rem 1.25rem;
-  border: thin solid #d61e22;
+  border: thin solid var(--red);
   border-radius: 1rem;
-  color: #d61e22;
+  color: var(--red);
   font-weight: bolder;
   text-transform: uppercase;
   transition: all 0.2s;
@@ -60,8 +93,8 @@
 .card-cta:active,
 .card-cta:focus,
 .card-cta:hover {
-  border-color: #f6f6f6;
-  background-color: #d61e22;
-  box-shadow: 0px 0px 0.625rem 0px rgba(0, 0, 0, 0.1);
-  color: #f6f6f6;
+  border-color: var(--gray);
+  background-color: var(--red);
+  box-shadow: 0px 0px 0.625rem 0px var(--shadow);
+  color: var(--gray);
 }

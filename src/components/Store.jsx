@@ -9,7 +9,10 @@ export default function Store() {
   // fetch JSON data and assign ids size 10
   const products = data.map((product) => ({ ...product, id: nanoid(10) }))
 
-  const icon = ['view_list', 'view_module']
+  const icon = [
+    { view: 'view_list', isActive: false },
+    { view: 'view_module', isActive: true },
+  ]
 
   const [view, setView] = useState(icon[0])
   const handleSwitch = (e) => {
@@ -17,12 +20,12 @@ export default function Store() {
     console.log('change state here')
   }
 
-  // console.log(products)
+  console.log(icon)
 
   return (
     <>
       <div>I'm working!</div>
-      <IconSwitch icon={view} onSwitch={handleSwitch} />
+      <IconSwitch icon={icon} onSwitch={handleSwitch} />
       <CardsView cards={products} />
       <ListView items={products} />
     </>

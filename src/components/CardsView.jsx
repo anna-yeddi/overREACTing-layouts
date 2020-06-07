@@ -20,11 +20,13 @@ function CardsView(products) {
             <div>
               <h3 className="card-name">{card.name}</h3>
               <p className="card-color">{card.color}</p>
-              <img
-                src={card.img}
-                alt={card.name + ', ' + card.color}
-                className="card-img"
-              />
+              <div className="card-img-container card-img-flip">
+                <img
+                  src={card.img}
+                  alt={card.name + ', ' + card.color}
+                  className="card-img card-img-flip"
+                />
+              </div>
               <p className="card-price">${card.price}</p>
               <button className="card-cta">Add to Cart</button>
             </div>
