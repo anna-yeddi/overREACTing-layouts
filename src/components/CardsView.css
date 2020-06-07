@@ -1,0 +1,67 @@
+.cards-container {
+  width: 100%;
+  /* overflow: hidden; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom)); /* For iPhone X */
+}
+
+.card {
+  width: 33.3%;
+  background-color: #f6f6f6;
+  border-radius: 1.25rem;
+  margin: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0px 0.625rem 1.875rem 0px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 0.625rem 0px rgba(0, 0, 0, 0.1);
+}
+
+.card-name {
+  text-transform: uppercase;
+}
+
+.card-color {
+  text-transform: lowercase;
+}
+
+.card-img {
+  display: block;
+  width: 100%;
+}
+
+.card-price {
+  display: inline-block;
+  width: 50%;
+  color: #d61e22;
+  font-size: large;
+  font-weight: 400;
+  text-align: left;
+}
+
+.card-cta {
+  float: right;
+  padding: 0.75rem 1.25rem;
+  border: thin solid #d61e22;
+  border-radius: 1rem;
+  color: #d61e22;
+  font-weight: bolder;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.card-cta:active,
+.card-cta:focus,
+.card-cta:hover {
+  border-color: #f6f6f6;
+  background-color: #d61e22;
+  box-shadow: 0px 0px 0.625rem 0px rgba(0, 0, 0, 0.1);
+  color: #f6f6f6;
+}

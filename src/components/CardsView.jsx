@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ShopItem from '../models/ShopItem'
+import './CardsView.css'
+// import ShopCard from './ShopCard'
 
 function CardsView(products) {
   const cards = products.cards.data
@@ -10,13 +11,24 @@ function CardsView(products) {
 
   return (
     <>
-      <p>Cards are here!</p>
-      <ul>
+      <h2>Cards are here!</h2>
+
+      <ul className="cards-container">
         {cards.map((card, i) => (
-          <li key={i}>
-            item {card.name} with i {i}
+          // <ShopCard />
+          <li key={i} className="card">
+            <div>
+              <h3 className="card-name">{card.name}</h3>
+              <p className="card-color">{card.color}</p>
+              <img
+                src={card.img}
+                alt={card.name + ', ' + card.color}
+                className="card-img"
+              />
+              <p className="card-price">${card.price}</p>
+              <button className="card-cta">Add to Cart</button>
+            </div>
           </li>
-          // <ShopItem />
         ))}
       </ul>
     </>

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ShopItem from '../models/ShopItem'
+import './ListView.css'
+// import ShopItem from './ShopItem'
 
 function ListView(props) {
   const items = props.items.data
@@ -11,14 +12,24 @@ function ListView(props) {
   return (
     <>
       <div>Many ShopItems will be here</div>
-      <ul>
+      <ul className="items-container">
         {items.map((item, i) => (
-          <li key={i}>
-            Item {item.name} with i {i}
+          // <ShopItem />
+          <li key={i} className="item">
+            <div className="item-row">
+              <img
+                src={item.img}
+                alt={item.name + ', ' + item.color}
+                className="item-img"
+              />
+              <h3 className="item-name">{item.name}</h3>
+              <p className="item-color">{item.color}</p>
+              <p className="item-price">${item.price}</p>
+              <button className="item-cta">Add to Cart</button>
+            </div>
           </li>
         ))}
       </ul>
-      {/* <ShopItem /> */}
     </>
   )
 }
