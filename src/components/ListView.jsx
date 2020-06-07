@@ -4,7 +4,7 @@ import './ListView.css'
 // import ShopItem from './ShopItem'
 
 function ListView(props) {
-  const items = props.items.data
+  const items = props.items
 
   console.log('Items:')
   console.log(items)
@@ -35,12 +35,14 @@ function ListView(props) {
 }
 
 ListView.propTypes = {
-  items: PropTypes.shape({
-    name: PropTypes.string,
-    price: PropTypes.string,
-    color: PropTypes.string,
-    img: PropTypes.string,
-  }).isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      price: PropTypes.string,
+      color: PropTypes.string,
+      img: PropTypes.string,
+    })
+  ).isRequired,
 }
 
 export default ListView

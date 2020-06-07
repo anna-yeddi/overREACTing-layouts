@@ -4,7 +4,7 @@ import './CardsView.css'
 // import ShopCard from './ShopCard'
 
 function CardsView(products) {
-  const cards = products.cards.data
+  const cards = products.cards
 
   console.log('Cards:')
   console.log(cards)
@@ -36,12 +36,14 @@ function CardsView(products) {
 }
 
 CardsView.propTypes = {
-  cards: PropTypes.shape({
-    name: PropTypes.string,
-    price: PropTypes.string,
-    color: PropTypes.string,
-    img: PropTypes.string,
-  }).isRequired,
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      price: PropTypes.string,
+      color: PropTypes.string,
+      img: PropTypes.string,
+    })
+  ).isRequired,
 }
 
 export default CardsView

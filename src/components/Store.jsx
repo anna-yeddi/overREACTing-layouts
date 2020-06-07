@@ -3,9 +3,12 @@ import data from '../data/products.json'
 import IconSwitch from './IconSwitch'
 import CardsView from './CardsView'
 import ListView from './ListView'
+import { nanoid } from 'nanoid'
 
 export default function Store() {
-  const products = { data }
+  // fetch JSON data and assign ids size 10
+  const products = data.map((product) => ({ ...product, id: nanoid(10) }))
+
   const icon = ['view_list', 'view_module']
 
   const [view, setView] = useState(icon[0])
@@ -14,7 +17,7 @@ export default function Store() {
     console.log('change state here')
   }
 
-  console.log(products)
+  // console.log(products)
 
   return (
     <>
