@@ -1,0 +1,25 @@
+.icon-switch-btn {
+  float: right;
+  padding: 0.35rem 0.35rem 0.25rem 0.25rem;
+  margin: var(--pb-gap); /* For iPhone X */
+  border: none;
+  border-radius: 1rem;
+  background-color: transparent;
+  box-shadow: 0px 0px 0.625rem 0px var(--shadow);
+  color: gray;
+  font-weight: bolder;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.icon-switch-btn:active,
+.icon-switch-btn:focus,
+.icon-switch-btn:hover {
+  background-color: gray;
+  box-shadow: 0px 0.625rem 1.875rem 0px var(--shadow);
+  color: white;
+}
+
+.icon-switch-icon {
+  padding: 0.25rem;
+  font-size: 2rem;
+}

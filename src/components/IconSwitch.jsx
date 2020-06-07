@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './IconSwitch.css'
 
 function IconSwitch(props) {
   const icon = props.icon
@@ -13,9 +14,9 @@ function IconSwitch(props) {
   return (
     <>
       <p>Now {icon.map((o) => o.isActive && o.view)} is active</p>
-      <button>
-        <i className="material-icons">{iconNext}</i>
-        <span className="sr-only">{iconNext.split('_')[1]} view</span>
+      <button className="icon-switch-btn">
+        <i className="material-icons icon-switch-icon">{iconNext}</i>
+        <span className="sr-only">{iconNext.split('_')[1] + ' view'}</span>
       </button>
     </>
   )
