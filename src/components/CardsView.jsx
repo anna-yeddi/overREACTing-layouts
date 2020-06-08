@@ -1,36 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './CardsView.css'
-// import ShopCard from './ShopCard'
+import ShopCard from './ShopCard'
+import Product from '../models/Product'
 
 function CardsView(products) {
-  const cards = products.cards
-
-  console.log('Cards:')
-  console.log(cards)
+  const cards = products.cards.map((o) => new Product({ ...o }))
 
   return (
     <>
-      <h2>Cards are here!</h2>
-
       <ul className="cards-container">
-        {cards.map((card, i) => (
-          // <ShopCard />
-          <li key={i} className="card">
-            <div>
-              <h3 className="card-name">{card.name}</h3>
-              <p className="card-color">{card.color}</p>
-              <div className="card-img-container card-img-flip">
-                <img
-                  src={card.img}
-                  alt={card.name + ', ' + card.color}
-                  className="card-img card-img-flip"
-                />
-              </div>
-              <p className="card-price">${card.price}</p>
-              <button className="card-cta">Add to Cart</button>
-            </div>
-          </li>
+        {cards.map((card) => (
+          <ShopCard card={card} key={card.id} />
         ))}
       </ul>
     </>
@@ -38,14 +19,7 @@ function CardsView(products) {
 }
 
 CardsView.propTypes = {
-  cards: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      price: PropTypes.string,
-      color: PropTypes.string,
-      img: PropTypes.string,
-    })
-  ).isRequired,
+  cards: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
 }
 
 export default CardsView

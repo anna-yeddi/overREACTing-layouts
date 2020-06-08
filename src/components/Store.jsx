@@ -6,28 +6,29 @@ import ListView from './ListView'
 import { nanoid } from 'nanoid'
 
 export default function Store() {
-  // fetch JSON data and assign ids size 10
-  const products = data.map((product) => ({ ...product, id: nanoid(10) }))
+  // fetch JSON data and assign IDs with size of 5
+  const products = data.map((product) => ({
+    ...product,
+    id: nanoid(5),
+  }))
 
-  const icon = [
-    { view: 'view_list', isActive: false },
-    { view: 'view_module', isActive: true },
-  ]
-
-  const [view, setView] = useState(icon[0])
-  const handleSwitch = (e) => {
-    setView((prevView) => prevView.filter((o) => o.icon === icon[1]))
-    console.log('change state here')
-  }
-
-  console.log(icon)
+  // Create a hook
+  const [icon, setIcon] = useState('view_module')
+  // handle click
+  const onSwitch = () =>
+    setIcon((prevIcon) => {
+      if (prevIcon === 'view_module') {
+        return 'view_list'
+      } else if (prevIcon === 'view_list') {
+        return 'view_module'
+      }
+    })
 
   return (
     <>
-      <div>I'm working!</div>
-      <IconSwitch icon={icon} onSwitch={handleSwitch} />
-      <CardsView cards={products} />
-      <ListView items={products} />
+      <IconSwitch icon={icon} onSwitch={onSwitch} />
+      {icon === 'view_list' && <CardsView cards={products} />}
+      {icon === 'view_module' && <ListView items={products} />}
     </>
   )
 }
